@@ -1,22 +1,25 @@
 package com.thatdev.gsminfo.gsm_info
 
 import androidx.annotation.NonNull
+import androidx.core.app.ActivityCompat
+import android.app.Application
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import android.telephony.TelephonyManager
 
 /** GsmInfoPlugin */
-class GsmInfoPlugin : FlutterPlugin, MethodCallHandler {
+class GsmInfoPlugin(activity: Activity) : FlutterPlugin, MethodCallHandler {
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
     /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
-
+    val pluginActivity: Activity = activity
+    private val application: Application = activity.application
+   
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "gsm_info")
         channel.setMethodCallHandler(this)
