@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion = await GsmInfo.platformVersion;
+      platformVersion = await GsmInfo.gsmSignalDbM;
     } on PlatformException {
       platformVersion = -999;
     }

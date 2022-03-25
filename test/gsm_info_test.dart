@@ -18,6 +18,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await GsmInfo.platformVersion, '42');
+    expect(await GsmInfo.gsmSignalDbM, '42');
   });
 }
