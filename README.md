@@ -2,14 +2,28 @@
 
 A new flutter plugin project.
 
-## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+## Package
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Package fetches the current Android GSM signal strength in dBm. The package works exclusively on Android
+The package requires `ACCESS_FINE_LOCATION` permission, or else it will throw a `PlatformException`
+
+## Installation
+
+Add to dev dependencies inside pubspec_yaml:
+
+```yaml
+    dependencies:
+        gsm_info: [version]
+```
+
+
+## Usage
+
+```dart
+import 'package:gsm_info.dart';
+
+...
+
+final signalStrength = await GsmInfo.gsmSignalDbM;
 
